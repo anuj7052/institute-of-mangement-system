@@ -1,6 +1,6 @@
 CREATE DATABASE institute_of_management_system;
 USE institute_of_management_system;
-drop database institute_of_management_system;
+
 -- Table: Institute
 
 CREATE TABLE Institute (
@@ -104,16 +104,83 @@ CREATE TABLE Attendance (
     attendance_date DATE,
     status ENUM('Present', 'Absent'),
     FOREIGN KEY (enrollment_id) REFERENCES Enrollment(enrollment_id)
-);
+    );
+INSERT INTO Attendance (enrollment_id, attendance_date, status) 
+VALUES 
+    (1, '2024-01-01', 'Present'),  
+    (2, '2024-01-01', 'Present'),
+    (3, '2024-01-01', 'Present'),
+    (4, '2024-01-01', 'Absent'), 
+    (5, '2024-01-01', 'Present'),  
+    (6, '2024-02-01', 'Absent'),  
+    (7, '2024-02-01', 'Present'),  
+    (8, '2024-02-01', 'Present'),  
+    (9, '2024-02-01', 'Absent'),  
+    (10, '2024-02-01', 'Present'), 
+    (11, '2024-03-01', 'Present'),
+    (12, '2024-03-01', 'Present'),
+    (13, '2024-03-01', 'Absent'), 
+    (14, '2024-03-01', 'Present'), 
+    (15, '2024-01-01', 'Present');
+    
+    select * from attendance;
 
 -- Table: Grades
 CREATE TABLE Grades (
     grade_id INT AUTO_INCREMENT PRIMARY KEY,
     enrollment_id INT,
-    grade DECIMAL(4,2),
+    grade float,
     FOREIGN KEY (enrollment_id) REFERENCES Enrollment(enrollment_id)
 );
+INSERT INTO Grades (enrollment_id, grade) 
+VALUES 
+    (1, 85.5),
+    (2, 90.0),
+    (4, 60.8),
+    (5, 95.7), 
+    (6, 70.3),
+    (7, 88.9),
+    (8, 79.4),  
+    (9, 82.1),
+    (10, 91.6),
+    (11, 85.2),
+    (12, 78.5),
+    (13, 64.7),
+    (14, 93.0),
+    (15, 87.3);
 
-
-
+select * from grades;
 SHOW TABLES;
+
+
+
+
+
+-- Query to retrieve all courses offered by an institute
+SELECT * FROM Course WHERE institute_id = 1;
+
+-- Query to find all students enrolled in a particular course( self join)
+SELECT s.name AS student_name, c.course_name 
+FROM Student s 
+JOIN Enrollment e ON s.student_id = e.student_id 
+JOIN Course c ON e.course_id = c.course_id 
+WHERE c.course_id = 2;
+
+-- Query to find faculty teaching a particular course
+SELECT f.name AS faculty_name, c.course_name 
+FROM Faculty f 
+JOIN Course c ON f.institute_id = c.institute_id 
+WHERE c.course_id = 1;
+
+-- Query to get attendance of a student for a particular course
+SELECT a.attendance_date, a.status 
+FROM Attendance a 
+JOIN Enrollment e ON a.enrollment_id = e.enrollment_id 
+JOIN Student s ON e.student_id = s.student_id 
+JOIN Course c ON e.course_id = c.course_id 
+WHERE s.student_id = 7 AND c.course_id = 2;
+
+-- Query to calculate average grade for a student in a particular course
+SELECT AVG(grade) AS average_grade 
+FROM Grades 
+WHERE enrollment_id IN (SELECT enrollment_id FROM Enrollment WHERE student_id = 1 AND course_id = 1);
