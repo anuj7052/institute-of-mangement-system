@@ -1,0 +1,4 @@
+Field,Type,Null,Key,Default,Extra
+course_id,int,NO,PRI,NULL,
+course_name,varchar(100),NO,,NULL,
+institute_id,int,YES,MUL,NULL,

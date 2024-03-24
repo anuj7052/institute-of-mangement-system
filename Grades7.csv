@@ -1,0 +1,4 @@
+Field,Type,Null,Key,Default,Extra
+grade_id,int,NO,PRI,NULL,auto_increment
+enrollment_id,int,YES,MUL,NULL,
+grade,float,YES,,NULL,

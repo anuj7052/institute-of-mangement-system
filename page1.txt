@@ -1,0 +1,21 @@
+                             Institute Of Management System                                              
+                                                            Final Project for SQL Module
+                                                                    by Anuj Singh
+1. Description:
+Following database schema is designed to function as a backend storage database for a web
+application built to manage a Institute.
+By storing information in a relational database, all the tasks related to daily functioning of the
+Institute can be performed easily and much more efficiently. Some of the benefits of using this system toerror
+? RDBMS provides many ways to analyze available data, thus helping in making more informed
+decisions about inventory management and other aspects of Institute management
+This database contains 6 tables:
+1. Institute
+2. Faculty
+3. Course
+4. Student
+5. Enrollment
+6. Grades
+How these tables/entities are related to each other is shown pictorially on next page through
+ER diagram, i.e., Entity Relationship Diagram.
+ 
+                                                   

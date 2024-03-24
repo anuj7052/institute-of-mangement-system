@@ -20,6 +20,7 @@ CREATE TABLE Course (
     institute_id INT,
     FOREIGN KEY (institute_id) REFERENCES Institute(institute_id)
 );
+desc course;
 insert into Course values
 ('1','fs','1'),
 ('2','dse','1'),
@@ -35,6 +36,7 @@ CREATE TABLE Faculty (
     institute_id INT,
     FOREIGN KEY (institute_id) REFERENCES Institute(institute_id)
 );
+desc Faculty;
 insert into Faculty values(1,'rohit','fs',1),(2,'modi','dse',1),(3,'yogi','aws',1);
 select * from Faculty;
 
@@ -48,6 +50,7 @@ CREATE TABLE Student (
     institute_id INT,
     FOREIGN KEY (institute_id) REFERENCES Institute(institute_id)
 );
+desc Student;
 insert into Student values
 (1,'anuj','ab@gmail.com','1234567','1'),
 (2,'aniket','aab@gmail.com','123457','1'),
@@ -79,11 +82,11 @@ CREATE TABLE Enrollment (
 );
 INSERT INTO Enrollment (enrollment_id, student_id, course_id, enrollment_date) 
 VALUES 
-(1,'1','3','2024-01-01'),
-(2,'2','3','2024-01-01'),
-(3,'3','3','2024-01-01'),
-(4,'4','3','2024-01-01'),
-(5,'5','3','2024-01-01'),
+(1,'1','1','2024-01-01'),
+(2,'2','1','2024-01-01'),
+(3,'3','1','2024-01-01'),
+(4,'4','1','2024-01-01'),
+(5,'5','1','2024-01-01'),
 (6,'5','2','2024-02-01'),
 (7,'7','2','2024-02-01'),
 (8,'8','2','2024-02-01'),
@@ -105,6 +108,7 @@ CREATE TABLE Attendance (
     status ENUM('Present', 'Absent'),
     FOREIGN KEY (enrollment_id) REFERENCES Enrollment(enrollment_id)
     );
+    desc attendence;
 INSERT INTO Attendance (enrollment_id, attendance_date, status) 
 VALUES 
     (1, '2024-01-01', 'Present'),  
@@ -148,7 +152,7 @@ VALUES
     (13, 64.7),
     (14, 93.0),
     (15, 87.3);
-
+desc Grades;
 select * from grades;
 SHOW TABLES;
 
@@ -183,4 +187,4 @@ WHERE s.student_id = 7 AND c.course_id = 2;
 -- Query to calculate average grade for a student in a particular course
 SELECT AVG(grade) AS average_grade 
 FROM Grades 
-WHERE enrollment_id IN (SELECT enrollment_id FROM Enrollment WHERE student_id = 1 AND course_id = 1);
+WHERE enrollment_id IN (SELECT enrollment_id FROM Enrollment WHERE student_id = 8 AND course_id = 2);

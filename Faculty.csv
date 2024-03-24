@@ -1,0 +1,5 @@
+Field,Type,Null,Key,Default,Extra
+faculty_id,int,NO,PRI,NULL,
+name,varchar(100),NO,,NULL,
+specialization,varchar(100),YES,,NULL,
+institute_id,int,YES,MUL,NULL,

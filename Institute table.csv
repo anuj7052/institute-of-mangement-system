@@ -1,0 +1,4 @@
+Field,Type,Null,Key,Default,Extra
+institute_id,int,NO,PRI,NULL,
+name,varchar(100),NO,,NULL,
+location,varchar(100),YES,,NULL,

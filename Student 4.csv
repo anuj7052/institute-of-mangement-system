@@ -1,0 +1,6 @@
+Field,Type,Null,Key,Default,Extra
+student_id,int,NO,PRI,NULL,
+name,varchar(100),NO,,NULL,
+email,varchar(100),YES,,NULL,
+phone,bigint,YES,,NULL,
+institute_id,int,YES,MUL,NULL,

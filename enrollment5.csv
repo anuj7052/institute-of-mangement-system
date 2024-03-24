@@ -1,0 +1,5 @@
+Field,Type,Null,Key,Default,Extra
+enrollment_id,int,NO,PRI,NULL,
+student_id,int,YES,MUL,NULL,
+course_id,int,YES,MUL,NULL,
+enrollment_date,date,YES,,NULL,
