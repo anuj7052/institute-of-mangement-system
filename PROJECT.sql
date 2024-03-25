@@ -168,7 +168,7 @@ SELECT s.name AS student_name, c.course_name
 FROM Student s 
 JOIN Enrollment e ON s.student_id = e.student_id 
 JOIN Course c ON e.course_id = c.course_id 
-WHERE c.course_id = 2;
+WHERE c.course_id = 3;
 
 -- Query to find faculty teaching a particular course
 SELECT f.name AS faculty_name, c.course_name 
